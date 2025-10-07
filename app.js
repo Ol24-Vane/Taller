@@ -25,12 +25,14 @@ function addTask() {
         return;
     }
 
-    const task = {
-        id: Date.now(),
-        text: taskText,
-        completed: false,
-        createdAt: new Date().toISOString()
-    };
+    const category = document.getElementById('categorySelect').value;
+const task = {
+    id: Date.now(),
+    text: taskText,
+    completed: false,
+    createdAt: new Date().toISOString(),
+    category: category
+};
 
     tasks.push(task);
     input.value = '';
@@ -60,7 +62,11 @@ function renderTasks() {
                    class="task-checkbox" 
                    ${task.completed ? 'checked' : ''} 
                    onchange="toggleTask(${task.id})">
-            <span class="task-text">${task.text}</span>
+            // REEMPLAZAR por:
+            <span class="task-text">
+                <span style="font-weight: bold;">${getCategoryIcon(task.category)}</span>
+                ${task.text}
+            </span>
             <button class="delete-btn" onclick="deleteTask(${task.id})">🗑️ Eliminar</button>
         `;
         taskList.appendChild(li);
@@ -146,4 +152,13 @@ function loadTasks() {
     if (stored) {
         tasks = JSON.parse(stored);
     }
+}
+// Agregar al final del archivo
+function getCategoryIcon(category) {
+    const icons = {
+        'personal': '🏠',
+        'trabajo': '💼',
+        'urgente': '🔥'
+    };
+    return icons[category] || '📝';
 }
