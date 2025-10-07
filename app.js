@@ -77,8 +77,9 @@ function renderTasks() {
             // Buscar esta línea (aprox línea 62):
 <span class="task-text">${task.text}</span>
 
-// Reemplazar por:
+/// SOLUCIÓN: Mantener ambas características
 <span class="task-text">
+    <span style="font-weight: bold;">${getCategoryIcon(task.category)}</span>
     ${task.text}
     <small style="color: #999; font-size: 12px; display: block; margin-top: 5px;">
         ${getTimeAgo(task.createdAt)}
