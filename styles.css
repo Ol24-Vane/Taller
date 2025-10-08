@@ -211,3 +211,10 @@ button {
     text-transform: uppercase;
     letter-spacing: 1px;
 }
+/* Hotfix: Mejorar layout móvil */
+@media (max-width: 600px) {
+    .task-text small {
+        font-size: 10px;
+        margin-top: 3px;
+    }
+}
